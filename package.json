@@ -1,0 +1,37 @@
+{
+  "name": "ts-meli-dojo",
+  "version": "1.0.0",
+  "description": "Typescript meli dojo",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test",
+    "init-ts": "tsc --init --rootDir src --outDir dist",
+    "start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carloshpds/ts-meli-dojo.git"
+  },
+  "keywords": [
+    "dojo",
+    "typescript",
+    "ts",
+    "javascript"
+  ],
+  "author": "carlos.praeiros@mercadolivre.com, matheus.soares@mercadolivre.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carloshpds/ts-meli-dojo/issues"
+  },
+  "homepage": "https://github.com/carloshpds/ts-meli-dojo#readme",
+  "dependencies": {
+    "ascii-banner": "0.0.2",
+    "typescript": "3.7.5"
+  },
+  "devDependencies": {
+    "@types/node": "^13.1.8",
+    "nodemon": "^2.0.2",
+    "ts-node": "^8.6.2"
+  }
+}
