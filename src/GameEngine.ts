@@ -1,13 +1,23 @@
 
 import Position from './domain/Position'
+import Ocean from './domain/Ocean'
+import DestroyerShip from './domain/ships/DestroyerShip'
 
 export default class GameEngine {
+  ocean: Ocean
+
   build() {
-    console.log('** Iniciando os dados em memória **')
+    this.ocean = new Ocean()
+    this.ocean.createShip(new DestroyerShip())
   }
 
   play(position: Position) {
-    console.log('** Jogou!! **')
+    this.ocean.fire(position)
+    this.print()
+  }
+
+  print(){
+    this.ocean.print()
   }
 
   quit() {
