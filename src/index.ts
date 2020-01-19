@@ -48,7 +48,7 @@ class Game {
         io.question('', this.onReceiveCoordinates.bind(this))
         break
       case '2':
-          console.log('Você escolheu a opção 2')
+        this.engine.quit()
         break
       case '3':
           console.log('Você escolheu a opção 3')

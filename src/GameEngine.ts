@@ -10,7 +10,7 @@ export default class GameEngine {
     console.log('** Jogou!! **')
   }
 
-  surrender() {
-    console.log('** Se rendeu!! **')
+  quit() {
+    console.log('** Fim! **')
   }
 }
