@@ -1,4 +1,5 @@
 import Ship from "./Ship"
+const chalk = require("chalk")
 
 export default class Position {
   x: number
@@ -13,12 +14,12 @@ export default class Position {
     this.x = parseInt(x.trim())
     this.y = parseInt(y.trim())
 
-    this.value = '-'
+    this.value = chalk.blue('-')
   }
 
   print() {
     if(this.hasShip && this.isAlive && process.env.ships){
-      this.value = 'N'
+      this.value = chalk.gray('N')
     }
     process.stdout.write(` ${this.value} `, 'utf8')
   }
@@ -26,9 +27,9 @@ export default class Position {
   set isAlive(value){
     this._isAlive = value
     if(value === false && this.hasShip) {
-      this.value = 'X'
+      this.value = chalk.red('X')
     } else if(value === false && !this.hasShip) {
-      this.value = 'O'
+      this.value = chalk.cyan('O')
     }
   }
 

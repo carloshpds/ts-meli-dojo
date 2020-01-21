@@ -12,11 +12,11 @@ export default class GameEngine {
 
   build() {
     this.ocean = new Ocean()
+    this.ocean.createShip(new PatrolBoat())
     this.ocean.createShip(new AircraftCarrier())
     this.ocean.createShip(new DestroyerShip())
     this.ocean.createShip(new Submarine())
     this.ocean.createShip(new Battleship())
-    this.ocean.createShip(new PatrolBoat())
   }
 
   play(position: Position) {
