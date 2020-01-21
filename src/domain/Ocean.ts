@@ -125,22 +125,26 @@ export default class Ocean {
     }
   }
 
-  fire(position: Position){
+  fire(position: Position) {
     const oceanPosition = this.positions[position.x][position.y]
 
     if(oceanPosition.hasShip) {
       const ship = this.ships.find((ship) => {
-        const shipPosition = ship.positions.find((currentPosition) => {
+        const shipPosition = ship.positions.find(currentPosition => {
           return currentPosition.x === position.x && currentPosition.y == position.y
         })
-        if(shipPosition){
+        if(shipPosition) {
           shipPosition.isAlive = false
+          return ship
         }
-        return ship
+
+        return null
       })
 
-      if(!ship.isAlive){
+      if(ship && !ship.isAlive) {
         console.log(`\n*** Afundou ${ship.type} ***\n`)
+      } else if(ship && ship.isAlive) {
+        console.log(`\n*** Acertou ${ship.type} ***\n`)
       }
     } else {
       oceanPosition.isAlive = false
