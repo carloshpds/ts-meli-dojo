@@ -26,7 +26,8 @@
   },
   "homepage": "https://github.com/carloshpds/ts-meli-dojo#readme",
   "dependencies": {
-    "ascii-banner": "0.0.2",
+    "chalk": "^3.0.0",
+    "figlet": "^1.2.4",
     "typescript": "3.7.5"
   },
   "devDependencies": {
