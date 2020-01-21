@@ -25,8 +25,22 @@ export default class Ocean {
   }
 
   print(){
+    console.log('\n    ')
+
+    // Header
+    process.stdout.write('   ')
+    for(let i = 1; i <= this.matrixSize; i++) {
+      process.stdout.write(` ${i} `)
+    }
+
     console.log('\n')
     for(let i = 1; i <= this.matrixSize; i++) {
+      process.stdout.write(` ${i}`)
+
+      if(i !== this.matrixSize){
+        process.stdout.write(' ')
+      }
+
       for(let j = 1; j <= this.matrixSize; j++) {
         this.positions[i][j].print()
       }
@@ -72,10 +86,11 @@ export default class Ocean {
     let isValidStartPosition = true
     if(direction === Direction.HORIZONTAL) {
       for(let i = 0; i < ship.length; i++) {
-        const position = this.positions[startPosition.x + i][startPosition.y]
+        const xPosition = this.positions[startPosition.x + i]
+        const position = xPosition ? xPosition[startPosition.y] : null
         const hasShip = position && position.hasShip
         isValidStartPosition = !hasShip
-        if(hasShip) {
+        if(hasShip || !xPosition) {
           isValidStartPosition = false
           break
         }
@@ -84,7 +99,7 @@ export default class Ocean {
       for(let i = 0; i < ship.length; i++) {
         const position = this.positions[startPosition.x][startPosition.y + i]
         const hasShip = position && position.hasShip
-        if(hasShip) {
+        if(hasShip || !position) {
           isValidStartPosition = false
           break
         }
