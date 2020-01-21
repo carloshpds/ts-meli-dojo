@@ -17,7 +17,7 @@ export default class Position {
   }
 
   print() {
-    if(this.hasShip && this.isAlive){
+    if(this.hasShip && this.isAlive && process.env.ships){
       this.value = 'N'
     }
     process.stdout.write(` ${this.value} `, 'utf8')

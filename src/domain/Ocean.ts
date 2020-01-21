@@ -25,6 +25,7 @@ export default class Ocean {
   }
 
   print(){
+    console.log('\n')
     for(let i = 1; i <= this.matrixSize; i++) {
       for(let j = 1; j <= this.matrixSize; j++) {
         this.positions[i][j].print()
