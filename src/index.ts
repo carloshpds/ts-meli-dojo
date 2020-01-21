@@ -2,9 +2,19 @@
 // Imports
 // ===
 // const AsciiBanner = require('ascii-banner')
+const figlet = require('figlet')
+const chalk = require('chalk')
 const readline = require('readline')
 import GameEngine from './GameEngine'
 import Position from './domain/Position'
+
+
+// ===
+// Locals
+// ===
+const io = readline.createInterface({
+  input: process.stdin
+})
 
 // ===
 // Banner
@@ -14,16 +24,13 @@ class Game {
   engine: GameEngine = new GameEngine()
 
   constructor(){
+    const banner = figlet.textSync('TS Meli Dojo', {
+      horizontalLayout: 'default',
+      verticalLayout: 'default'
+    })
+
+    console.log(chalk.yellow(banner))
     this.run()
-  }
-
-  async showBanner() {
-    // await AsciiBanner
-    // .write('TS Meli Dojo')
-    // .color('yellow')
-    // .out()
-
-    // this.main()
   }
 
   onReceiveCoordinates(stringCoordinates: String) {
@@ -40,10 +47,6 @@ class Game {
   onReadMenuOption(selectedOption: String) {
     switch (selectedOption) {
       case '1':
-        const io = readline.createInterface({
-          input: process.stdin
-        })
-
         console.log('\nQuais são as coordenadas? X, Y')
         io.question('', this.onReceiveCoordinates.bind(this))
         break
@@ -51,8 +54,8 @@ class Game {
         this.engine.quit()
         break
       case '3':
-          console.log('Você escolheu a opção 3')
-          process.exit(0)
+        console.log('Você escolheu a opção 3')
+        process.exit(0)
         break
 
       default:
@@ -64,10 +67,6 @@ class Game {
     console.log('\n=== Menu ===')
     console.log('\n1. Jogar')
     console.log('2. Desistir')
-
-    const io = readline.createInterface({
-      input: process.stdin
-    })
 
     console.log('\nO que deseja fazer?')
     io.question('', this.onReadMenuOption.bind(this))
